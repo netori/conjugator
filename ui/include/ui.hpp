@@ -1,0 +1,4 @@
+namespace ui
+{
+    void show();
+}

@@ -1,0 +1,5 @@
+add_library(jp_ui STATIC src/ui.cpp)
+target_include_directories(jp_ui PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_link_libraries(jp_ui PRIVATE ftxui::component)
+target_link_libraries(jp_ui PRIVATE ftxui::dom)
+target_link_libraries(jp_ui PRIVATE ftxui::screen)
