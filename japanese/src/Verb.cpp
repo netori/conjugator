@@ -1,6 +1,6 @@
 #include "../include/Verb.hpp"
 
-JP::Verb::Verb(std::wstring verb, std::string reading, std::string type, std::string group)
+JP::Verb::Verb(std::string verb, std::string reading, std::string type, std::string group)
 {
     this->verb = verb;
     this->reading = reading;
@@ -8,7 +8,16 @@ JP::Verb::Verb(std::wstring verb, std::string reading, std::string type, std::st
     this->group = group;
 }
 
-JP::Conjugatable* JP::Verb::conjugate() const
+std::string JP::Verb::conjugate(ConjugationType tense) const
 {
-    return nullptr;
+
+    switch(tense)
+    {
+        case ConjugationType::NonPast:
+            return this->verb;
+        case ConjugationType::Past:
+        break;
+
+    }
+    return "";
 }

@@ -9,9 +9,9 @@ namespace JP
 class Verb : public Conjugatable
 {
 public:
-    Verb(std::wstring verb, std::string reading, std::string type, std::string group);
-    std::wstring verb;
-    Conjugatable* conjugate() const override;
+    Verb(std::string verb, std::string reading, std::string type, std::string group);
+    std::string conjugate(ConjugationType) const override;
+    std::string verb;
 };
 }
 

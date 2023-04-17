@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.CT": "cea",
+        "iostream": "cpp"
+    }
+}
