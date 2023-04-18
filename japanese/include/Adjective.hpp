@@ -1,30 +1,17 @@
-// This file contains the Verb class, which is the abstract class for all verbs.
-
 #include <string>
 
-#ifndef VERB_HPP
-#define VERB_HPP
+#ifndef ADJECTIVE_HPP
+#define ADJECTIVE_HPP
 
 namespace JP
 {
-class Verb
+class Adjective
 {
-public:
     /// @brief This enum class contains all the forms that a verb can be conjugated into.
     enum class Form : uint8_t
     {
-        Plain,         
+        Plain,
         Past,
-        PastPolite,     // た-form
-        PlainPolite,    // ます-form
-        Te,             // て-form
-        Conditional,    // ば-form | たら-form
-        Imperative,     // なさい-form
-        Volitional,     // ましょう-form
-        Potential,      // う-form
-        Passive,        // れる-form
-        Causative,      // せる-form
-        CausativePassive, // れせる-form
     }; 
 
     /// @brief  This virtual function is used to conjugate a verb into an affirmative with a particular form.
@@ -40,19 +27,12 @@ public:
     /// @brief This enum class contains verb types.
     enum class Type : uint8_t
     {
-        Ichidan,
-        Godan,
-        Suru,
-        Kuru,
+        na,
+        i,
     };
 
     Type type;
-
-    /// @brief This is the default destructor for the Verb class.
-    virtual ~Verb() = default;
-
     std::string reading;
-    
 };
 }
 

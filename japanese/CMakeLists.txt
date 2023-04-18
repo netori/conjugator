@@ -1,4 +1,4 @@
-add_library(jp_lang STATIC src/Verb.cpp)
+add_library(jp_lang STATIC src/Verb_Ichidan.cpp)
 target_include_directories(jp_lang PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 target_compile_options(jp_lang PRIVATE
