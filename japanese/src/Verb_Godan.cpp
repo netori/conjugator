@@ -1,16 +1,17 @@
-#include "../include/Verb_Ichidan.hpp"
+#include "../include/Verb_Godan.hpp"
 #include <iostream>
 
 /// @todo Add a wrapper that checks for invalid argument, and invalid verbs.
-JP::Ichidan::Ichidan(std::string reading) : Verb()
+JP::Godan::Godan(std::string reading) : Verb()
 {   
     this->reading = reading;
-    type = Type::Ichidan;
+    type = Type::Godan;
     stem = GetStem();
 }
 
-std::string JP::Ichidan::GetAffirmative(Form form) const noexcept
+std::string JP::Godan::GetAffirmative(Form form) const noexcept
 {
+    
     switch (form)
     {
     case Form::Plain:
@@ -48,7 +49,7 @@ std::string JP::Ichidan::GetAffirmative(Form form) const noexcept
     }
 }
 
-std::string JP::Ichidan::GetNegative(Form form) const noexcept
+std::string JP::Godan::GetNegative(Form form) const noexcept
 {
     switch (form)
     {
@@ -71,9 +72,9 @@ std::string JP::Ichidan::GetNegative(Form form) const noexcept
     case Form::ImperativeFormal:
         return stem + "るな";
     case Form::Volitional:          // TODO: Add functions.
-        return "";
+        return stem + "ません";
     case Form::VolitionalFormal:    // TODO: Add functions.
-        return "";
+        return stem + "ません";
     case Form::Potential:
         return stem + "られない";
     case Form::Passive:
@@ -87,7 +88,8 @@ std::string JP::Ichidan::GetNegative(Form form) const noexcept
     }
 }
 
-std::string JP::Ichidan::GetStem() const noexcept
+/// @todo Add a test for this function.
+std::string JP::Godan::GetStem() const noexcept
 {
     std::string trim = reading;
 
@@ -100,4 +102,9 @@ std::string JP::Ichidan::GetStem() const noexcept
         trim.resize(cp - trim.data());
 
     return trim;
+}
+
+std::string JP::Godan::GetRoot() const noexcept
+{
+    return "";
 }

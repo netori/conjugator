@@ -10,34 +10,40 @@ namespace JP
 class Verb
 {
 public:
-    /// @brief This enum class contains all the forms that a verb can be conjugated into.
+    /// @brief This is the default destructor for the Verb class.
+    virtual ~Verb() = default;
+
+    /// @brief The `Form` enum class contains all the forms that a verb can be conjugated into.
     enum class Form : uint8_t
     {
-        Plain,         
+        Plain,
+        PlainPolite,
         Past,
-        PastPolite,     // た-form
-        PlainPolite,    // ます-form
-        Te,             // て-form
-        Conditional,    // ば-form | たら-form
-        Imperative,     // なさい-form
-        Volitional,     // ましょう-form
-        Potential,      // う-form
-        Passive,        // れる-form
-        Causative,      // せる-form
-        CausativePassive, // れせる-form
+        PastPolite,
+        Te,
+        ConditionalBa,
+        ConditionalTara,
+        Imperative,
+        ImperativeFormal,
+        Volitional,
+        VolitionalFormal,
+        Potential,
+        Passive,
+        Causative,
+        CausativePassive,
     }; 
 
     /// @brief  This virtual function is used to conjugate a verb into an affirmative with a particular form.
     /// @param  form The form to conjugate the verb into.
     /// @return The conjugated verb.
-    virtual std::string Affirmative(Form) const = 0;
+    virtual std::string GetAffirmative(Form) const = 0;
 
     /// @brief  This virtual function is used to conjugate a verb into a negative with a particular form.
     /// @param  form The form to conjugate the verb into.
     /// @return The conjugated verb.
-    virtual std::string Negative(Form) const = 0;
+    virtual std::string GetNegative(Form) const = 0;
 
-    /// @brief This enum class contains verb types.
+    /// @brief This enum class contains verb types. This might be pointless.
     enum class Type : uint8_t
     {
         Ichidan,
@@ -46,13 +52,14 @@ public:
         Kuru,
     };
 
+    /// @brief This contains the type of the verb.
     Type type;
 
-    /// @brief This is the default destructor for the Verb class.
-    virtual ~Verb() = default;
-
+    /// @brief This contains the reading of the verb.
     std::string reading;
-    
+
+private:
+    int GetNum() const noexcept { return 0;};
 };
 }
 

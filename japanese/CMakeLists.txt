@@ -1,5 +1,8 @@
-add_library(jp_lang STATIC src/Verb_Ichidan.cpp)
-target_include_directories(jp_lang PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+add_library(jp_lang STATIC 
+    src/Verb_Ichidan.cpp
+    src/Verb_Godan.cpp
+)
+target_include_directories(jp_lang PRIVATE include)
 
 target_compile_options(jp_lang PRIVATE
 -Wall
@@ -26,3 +29,7 @@ target_compile_options(jp_lang PRIVATE
 $<$<CXX_COMPILER_ID:MSVC>:
 "/Wall" >
 )
+
+if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME AND JP_LANG_BUILD_TESTS)
+    add_subdirectory(tests)
+endif()
