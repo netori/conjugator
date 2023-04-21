@@ -17,7 +17,7 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # --------------------------------------------------------------------------------
-#                                 Include FTXUI
+#                                  Fetch FTXUI
 # --------------------------------------------------------------------------------
 
 include(FetchContent)
@@ -34,6 +34,23 @@ if(NOT ftxui_POPULATED)
 endif()
 
 # --------------------------------------------------------------------------------
+#                                  Fetch Catch2
+# --------------------------------------------------------------------------------
+
+Include(FetchContent)
+
+FetchContent_Declare(
+  Catch2
+  GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+  GIT_TAG        v3.3.2 # or a later release
+)
+
+FetchContent_MakeAvailable(Catch2)
+list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
+include(CTest)
+include(Catch)
+
+# --------------------------------------------------------------------------------
 #                             Compile the executable
 # --------------------------------------------------------------------------------
 
@@ -44,8 +61,8 @@ add_subdirectory(japanese)
 target_link_libraries(${PROJECT_NAME} PRIVATE jp_lang)
 
 # Add the Japanese UI library.
-# add_subdirectory(ui)
-# target_link_libraries(${PROJECT_NAME} PRIVATE jp_ui)
+#add_subdirectory(ui)
+#target_link_libraries(${PROJECT_NAME} PRIVATE jp_ui)
 
 # Add compile options
 target_compile_options(${PROJECT_NAME} PRIVATE

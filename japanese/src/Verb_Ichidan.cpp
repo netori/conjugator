@@ -13,7 +13,7 @@ std::string JP::Ichidan::GetAffirmative(Form form) const noexcept
 {
     switch (form)
     {
-    case Form::Plain:
+    case Form::Present:
         return reading;
     case Form::PlainPolite:
         return stem + "ます";
@@ -29,11 +29,13 @@ std::string JP::Ichidan::GetAffirmative(Form form) const noexcept
         return stem + "たら";
     case Form::Imperative:
         return stem + "ろ";
-    case Form::ImperativeFormal:
+    case Form::ImperativePolite:
+        return stem + "てください";
+    case Form::ImperativePoliteShort:
         return stem + "なさい";
     case Form::Volitional:
         return stem + "よう";
-    case Form::VolitionalFormal:
+    case Form::VolitionalPolite:
         return stem + "ましょう";
     case Form::Potential:
         return stem + "られる";
@@ -52,7 +54,7 @@ std::string JP::Ichidan::GetNegative(Form form) const noexcept
 {
     switch (form)
     {
-    case Form::Plain:
+    case Form::Present:
         return stem + "ない";
     case Form::PlainPolite:
         return stem + "ません";
@@ -68,11 +70,13 @@ std::string JP::Ichidan::GetNegative(Form form) const noexcept
         return stem + "なかったら";
     case Form::Imperative:
         return stem + "るな";
-    case Form::ImperativeFormal:
-        return stem + "るな";
+    case Form::ImperativePolite:
+        return stem + "ないでください";
+    case Form::ImperativePoliteShort:
+        return stem + "ないでください";
     case Form::Volitional:          // TODO: Add functions.
         return "";
-    case Form::VolitionalFormal:    // TODO: Add functions.
+    case Form::VolitionalPolite:    // TODO: Add functions.
         return "";
     case Form::Potential:
         return stem + "られない";

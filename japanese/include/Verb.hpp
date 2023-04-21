@@ -16,20 +16,26 @@ public:
     /// @brief The `Form` enum class contains all the forms that a verb can be conjugated into.
     enum class Form : uint8_t
     {
-        Plain,
-        PlainPolite,
+        Present,
+        PlainPolite, 
         Past,
         PastPolite,
         Te,
         ConditionalBa,
+        ConditionalBaPolite,
         ConditionalTara,
+        ConditionalTaraPolite,
         Imperative,
-        ImperativeFormal,
+        ImperativePolite,
+        ImperativePoliteShort,
         Volitional,
-        VolitionalFormal,
+        VolitionalPolite,
         Potential,
+        PotentialPolite,
         Passive,
+        PassivePolite,
         Causative,
+        CausativePolite,
         CausativePassive,
     }; 
 
