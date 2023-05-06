@@ -1,6 +1,10 @@
+option(JP_LANG_BUILD_TESTS "Build tests for the Japanese Language library." ON)
+
 add_library(jp_lang STATIC 
     src/Verb_Ichidan.cpp
     src/Verb_Godan.cpp
+    src/Verb_Factory.cpp
+    src/Suffix.cpp
 )
 target_include_directories(jp_lang PRIVATE include)
 

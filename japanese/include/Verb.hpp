@@ -1,5 +1,5 @@
 // This file contains the Verb class, which is the abstract class for all verbs.
-
+#include "Conjugatable.hpp"
 #include <string>
 
 #ifndef VERB_HPP
@@ -7,7 +7,7 @@
 
 namespace JP
 {
-class Verb
+class Verb : public Conjugatable
 {
 public:
     /// @brief This is the default destructor for the Verb class.
@@ -16,28 +16,31 @@ public:
     /// @brief The `Form` enum class contains all the forms that a verb can be conjugated into.
     enum class Form : uint8_t
     {
-        Present,
-        PlainPolite, 
+        Plain,
         Past,
-        PastPolite,
         Te,
         ConditionalBa,
-        ConditionalBaPolite,
         ConditionalTara,
-        ConditionalTaraPolite,
         Imperative,
-        ImperativePolite,
-        ImperativePoliteShort,
+        ImperativeNasai,
         Volitional,
-        VolitionalPolite,
         Potential,
-        PotentialPolite,
         Passive,
-        PassivePolite,
         Causative,
-        CausativePolite,
         CausativePassive,
     }; 
+
+    enum class Inflection : uint8_t
+    {
+        PresentAffirmativeCasual,
+        PresentAffirmativePolite,
+        PresentNegativeCasual,
+        PresentNegativePolite,
+        PastAffirmativeCasual,
+        PastAffirmativePolite,
+        PastNegativeCasual,
+        PastNegativePolite,
+    };
 
     /// @brief  This virtual function is used to conjugate a verb into an affirmative with a particular form.
     /// @param  form The form to conjugate the verb into.
@@ -65,7 +68,7 @@ public:
     std::string reading;
 
 private:
-    int GetNum() const noexcept { return 0;};
+
 };
 }
 

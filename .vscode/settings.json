@@ -1,6 +1,5 @@
 {
     "files.associations": {
-        "*.CT": "cea",
         "iostream": "cpp",
         "iosfwd": "cpp",
         "__bit_reference": "cpp",
@@ -71,6 +70,14 @@
         "chrono": "cpp",
         "compare": "cpp",
         "concepts": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "fstream": "cpp",
+        "future": "cpp",
+        "iomanip": "cpp",
+        "regex": "cpp",
+        "set": "cpp",
+        "unordered_set": "cpp",
+        "numeric": "cpp",
+        "random": "cpp"
     }
 }

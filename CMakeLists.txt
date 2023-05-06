@@ -1,19 +1,13 @@
 cmake_minimum_required(VERSION 3.26)
 
-# Set project name, version and laguages here. (change as needed)
-# Version numbers are available by including "exampleConfig.h" in
-# the source. See exampleConfig.h.in for some more details.
 project(mazui
     VERSION 1.0.0
     DESCRIPTION "A tool to practice Japanese Verb and Adjective conjugations."
     LANGUAGES CXX
 )
 
-option(JP_LANG_BUILD_TESTS "Build tests for the Japanese Language library." ON)
-enable_testing()
-
 # Set C++ standard here. (change as needed)
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # --------------------------------------------------------------------------------

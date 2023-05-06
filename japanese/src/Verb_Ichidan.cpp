@@ -1,8 +1,8 @@
-#include "../include/Verb_Ichidan.hpp"
-#include <iostream>
+#include "Verb_Ichidan.hpp"
+#include "Suffix.hpp"
 
 /// @todo Add a wrapper that checks for invalid argument, and invalid verbs.
-JP::Ichidan::Ichidan(std::string reading) : Verb()
+JP::Ichidan::Ichidan(std::string reading)
 {   
     this->reading = reading;
     type = Type::Ichidan;
@@ -13,9 +13,9 @@ std::string JP::Ichidan::GetAffirmative(Form form) const noexcept
 {
     switch (form)
     {
-    case Form::Present:
+    case Form::Plain:
         return reading;
-    case Form::PlainPolite:
+    case Form::PresentPolite:
         return stem + "ます";
     case Form::Past:
         return stem + "た";
@@ -31,7 +31,7 @@ std::string JP::Ichidan::GetAffirmative(Form form) const noexcept
         return stem + "ろ";
     case Form::ImperativePolite:
         return stem + "てください";
-    case Form::ImperativePoliteShort:
+    case Form::ImperativeNasai:
         return stem + "なさい";
     case Form::Volitional:
         return stem + "よう";
@@ -54,9 +54,9 @@ std::string JP::Ichidan::GetNegative(Form form) const noexcept
 {
     switch (form)
     {
-    case Form::Present:
+    case Form::Plain:
         return stem + "ない";
-    case Form::PlainPolite:
+    case Form::PresentPolite:
         return stem + "ません";
     case Form::Past:
         return stem + "なかった";
@@ -72,7 +72,7 @@ std::string JP::Ichidan::GetNegative(Form form) const noexcept
         return stem + "るな";
     case Form::ImperativePolite:
         return stem + "ないでください";
-    case Form::ImperativePoliteShort:
+    case Form::ImperativeNasai:
         return stem + "ないでください";
     case Form::Volitional:          // TODO: Add functions.
         return "";
@@ -105,3 +105,44 @@ std::string JP::Ichidan::GetStem() const noexcept
 
     return trim;
 }
+
+std::string JP::Ichidan::Conjugate(Form form, Tense tense, State state) const noexcept
+{
+    int a = static_cast<int>(form);
+    //int b = form + tense;
+    return "";
+    //return stem + JP::Suffix::imperative.at(state).at(tense);
+}
+
+const std::unordered_map<JP::Verb::Form, const std::unordered_map<JP::Verb::Inflection, const std::string>> JP::Ichidan::suffix = {
+    {Form::Plain,{
+        {Inflection::PresentAffirmativeCasual, "る"},
+        {Inflection::PresentAffirmativePolite, "ます"},
+        {Inflection::PresentNegativeCasual, "ない"},
+        {Inflection::PresentNegativePolite, "ません"},
+        {Inflection::PastAffirmativeCasual, "た"},
+        {Inflection::PastAffirmativePolite, "ました"},
+        {Inflection::PastNegativeCasual, "なかった"},
+        {Inflection::PastNegativePolite, "ませんでした"},
+    }},
+    {Form::Te, {
+        {Inflection::PresentAffirmativeCasual, "て"},
+        {Inflection::PresentAffirmativePolite, "て"},
+        {Inflection::PresentNegativeCasual, "なくて"},
+        {Inflection::PresentNegativePolite, "なくて"},
+        {Inflection::PastAffirmativeCasual, ""},
+        {Inflection::PastAffirmativePolite, ""},
+        {Inflection::PastNegativeCasual, "なくて"},
+        {Inflection::PastNegativePolite, " なくて"},
+    }},
+    {Form::ConditionalBa, {
+        {Inflection::PresentAffirmativeCasual, "れば"},
+        {Inflection::PresentAffirmativePolite, "れば"},
+        {Inflection::PresentNegativeCasual, "なければ"},
+        {Inflection::PresentNegativePolite, "なければ"},
+        {Inflection::PastAffirmativeCasual, "たら"},
+        {Inflection::PastAffirmativePolite, "ましたら"},
+        {Inflection::PastNegativeCasual, "なかったら"},
+        {Inflection::PastNegativePolite, "ませんでしたら"},
+    }},
+};

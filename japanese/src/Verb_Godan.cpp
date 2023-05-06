@@ -1,4 +1,4 @@
-#include "../include/Verb_Godan.hpp"
+#include "Verb_Godan.hpp"
 #include <iostream>
 
 /// @todo Add a wrapper that checks for invalid argument, and invalid verbs.
@@ -14,9 +14,9 @@ std::string JP::Godan::GetAffirmative(Form form) const noexcept
     
     switch (form)
     {
-    case Form::Present:
+    case Form::Plain:
         return reading;
-    case Form::PlainPolite:
+    case Form::PresentPolite:
         return stem + "ます";
     case Form::Past:
         return stem + "た";
@@ -53,9 +53,9 @@ std::string JP::Godan::GetNegative(Form form) const noexcept
 {
     switch (form)
     {
-    case Form::Present:
+    case Form::Plain:
         return stem + "ない";
-    case Form::PlainPolite:
+    case Form::PresentPolite:
         return stem + "ません";
     case Form::Past:
         return stem + "なかった";
